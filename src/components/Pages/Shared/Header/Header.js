@@ -9,6 +9,11 @@ const Header = () => {
 
     const {user} = useContext(AuthContext); 
 
+    // sign out
+    const handleLogOut = () => {
+      console.log('signout');
+    }
+
     return (
         <div>
     <Navbar className='mb-4' collapseOnSelect expand="lg" bg="light" variant="light">
@@ -29,15 +34,14 @@ const Header = () => {
           <Nav>
             <Nav.Link href="#deets">
               {
-                // user?.uid ? 
-                // <>
-                //   <span>{user?.displayName}</span>
-                  
-                //   <Button variant="light" onClick={handleLogOut}>Log Out</Button>
-                // </>
-                // : 
+                user?.uid ? 
                 <>
-                  <Link to='/'>{user?.displayName}</Link>
+                  <span>{user?.displayName}</span>
+                  
+                  <Button className='ms-4' variant="outline-primary" onClick={handleLogOut}>Log Out</Button>
+                </>
+                : 
+                <>
                   <Link to='/login'><Button variant="primary">LOGIN</Button></Link>
 
                 {/* //   <Link to='/register'>Register</Link> */}

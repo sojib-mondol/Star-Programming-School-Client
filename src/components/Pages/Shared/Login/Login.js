@@ -9,7 +9,7 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const Login = () => {
 
-    const {signIn, googleSignIn} = useContext(AuthContext);
+    const {signIn, googleSignIn, githubSignIn} = useContext(AuthContext);
 
     const [error, setError] = useState('');
 
@@ -60,7 +60,18 @@ const Login = () => {
             console.log(user);
             toast.success('Successfully logged in');
         })
-        .catc(error => console.error(error));
+        .catch(error => console.error(error));
+    }
+
+    //GitHub signin
+    const handleGitHubSignIn = () => {
+        githubSignIn()
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            toast.success('Successfully logged in');
+        })
+        .catch(error => console.error(error));
     }
 
     return (
@@ -95,7 +106,7 @@ const Login = () => {
         <div className='text-center mb-3'>
             <FaGoogle onClick={handleGoogleSignIn}  className='me-4 ' style={{cursor:'pointer'}}></FaGoogle>
             
-            <FaGithub style={{cursor:'pointer'}}></FaGithub>
+            <FaGithub onClick={handleGitHubSignIn} style={{cursor:'pointer'}}></FaGithub>
         </div>
     </div>
     );
