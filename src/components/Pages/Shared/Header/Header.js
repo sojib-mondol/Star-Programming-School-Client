@@ -37,8 +37,8 @@ const Header = () => {
                 // </>
                 // : 
                 <>
-                  <Link to='/login'>{user?.displayName}</Link>
-                  <Link to='/login'><Button variant="primary">Login</Button></Link>
+                  <Link to='/'>{user?.displayName}</Link>
+                  <Link to='/login'><Button variant="primary">LOGIN</Button></Link>
 
                 {/* //   <Link to='/register'>Register</Link> */}
                 </>
