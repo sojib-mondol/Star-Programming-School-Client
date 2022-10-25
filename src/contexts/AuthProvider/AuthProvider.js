@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import app from "../../firebase/firebase.config";
-import {getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, GithubAuthProvider, onAuthStateChanged } from "firebase/auth";
+import {getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, GithubAuthProvider, onAuthStateChanged, signOut } from "firebase/auth";
 
 export const AuthContext = createContext();
 
@@ -53,8 +53,11 @@ const AuthProvider = ({children}) => {
     }
 
     // Sign out 
+    const logOut = () => {
+        return signOut(auth);
+    }
 
-    const authInfo = {user, darkMode, setDarkMode, signIn, googleSignIn, githubSignIn}
+    const authInfo = {user, darkMode, setDarkMode, signIn, googleSignIn, githubSignIn, logOut}
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

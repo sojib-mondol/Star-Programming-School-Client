@@ -1,17 +1,23 @@
 import React from 'react';
 import { useContext } from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Container, Image, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 import Button from 'react-bootstrap/Button';
+import toast from 'react-hot-toast';
+import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
 
-    const {user} = useContext(AuthContext); 
+    const {user, logOut} = useContext(AuthContext); 
 
     // sign out
     const handleLogOut = () => {
-      console.log('signout');
+      logOut(() => {
+        toast.success('Successfully logged out');
+      })
+      .then()
+      .catch(error => console.error(error));
     }
 
     return (
@@ -37,12 +43,18 @@ const Header = () => {
                 user?.uid ? 
                 <>
                   <span>{user?.displayName}</span>
-                  
+                  <Link to="/profile">
+                    {user?.photoURL?
+                      <Image className=' ms-2' style={{height: '30px'}} roundedCircle src={user.photoURL}></Image>  
+                      :
+                      <FaUser></FaUser>
+                    }
+                  </Link>
                   <Button className='ms-4' variant="outline-primary" onClick={handleLogOut}>Log Out</Button>
                 </>
                 : 
                 <>
-                  <Link to='/login'><Button variant="primary">LOGIN</Button></Link>
+                  <Link to='/login'><Button variant="outline-primary">LOGIN</Button></Link>
 
                 {/* //   <Link to='/register'>Register</Link> */}
                 </>
@@ -51,22 +63,7 @@ const Header = () => {
 
             {/* for the user profile  */}
 
-            <Link to="/profile">
-            {/* {user?.photoURL?
-              <Image style={{height: '30px'}} roundedCircle src={user.photoURL}></Image>  
-              :
-              <FaUser></FaUser>
-            } */}
-            </Link>
-            <Link to="">
-            {/* {user?.photoURL?
-              <Image style={{height: '30px'}} roundedCircle src={user.photoURL}></Image>  
-              :
-              <FaUser></FaUser>
-            } */}
-            </Link>
-
-
+            
           </Nav>
           <div className='d-lg-none'>
             {/* <LeftSideNav></LeftSideNav> */}
