@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layout/Main";
 import NotFoundPage from "../../Pages/NotFoundPage/NotFoundPage";
 import Login from "../../Pages/Shared/Login/Login";
+import Register from "../../Pages/Shared/Register/Register";
 
 export const routes = createBrowserRouter([
     {
@@ -11,6 +12,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
             }
         ]
     },

@@ -1,3 +1,4 @@
+
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -6,8 +7,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 
-
-const Login = () => {
+const Register = () => {
 
     const {signIn, googleSignIn, githubSignIn} = useContext(AuthContext);
 
@@ -27,6 +27,7 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
+        
         console.log(email, password);
         
         signIn(email, password)
@@ -75,8 +76,16 @@ const Login = () => {
     }
 
     return (
-    <div className='w-50 m-auto'>
+        <div className='w-50 m-auto'>
         <Form  onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Full Name</Form.Label>
+                <Form.Control name='name' type="text" placeholder="Enter full name" required/>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Photo URL</Form.Label>
+                <Form.Control name='photo' type="text" placeholder="Enter photo url" required/>
+            </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control name='email' type="email" placeholder="Enter email" required/>
@@ -86,11 +95,15 @@ const Login = () => {
                 <Form.Label>Password</Form.Label>
                 <Form.Control name='password' type="password" placeholder="Password" required/>
             </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Confirm Password</Form.Label>
+                <Form.Control name='confirmPassword' type="password" placeholder="Confirm password" required/>
+            </Form.Group>
             {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Form.Check type="checkbox" label="Check me out" />
             </Form.Group> */}
             <Button className='mb-4 w-100' variant="primary" type="submit">
-                Login
+                Register
             </Button>
             <Form.Text className="text-danger">
             {error}
@@ -98,7 +111,7 @@ const Login = () => {
         </Form>
         
         <div className='text-center mb-3'>
-            <p>Not a member? <Link to='/register'>Please Register</Link>  </p>
+            <p>Alredy a member? <Link to='/login'>Please Login</Link>  </p>
         </div>
         <div className='text-center mb-3'>
             <p>or sign in with: </p>
@@ -112,4 +125,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
