@@ -26,15 +26,15 @@ const Header = () => {
       <Container>
         <Navbar.Brand >
             <Link to='/'><img style={{height:'35px'}} className="me-2 rounded-5" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF4Gh0FiwQepiJqTtYfE5NtojkXvPVLITywA&usqp=CAU" alt="" /></Link>
-            <Link to='/'>Star Programming School</Link>
+            <Link style={{textDecoration: 'none', color:'black', fontWeight: 'bold'}} to='/'>Star Programming School</Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#features">Courses</Nav.Link>
-            <Nav.Link href="#pricing">FAQ</Nav.Link>
-            <Nav.Link href="#pricing">Blog</Nav.Link>
-            <Nav.Link href="#pricing">toggle theme (dark/ light)</Nav.Link>
+          <Nav className="me-auto ">
+            <Link style={{textDecoration: 'none', color:'black'}} className='ms-3' href="#features">Courses</Link>
+            <Link style={{textDecoration: 'none', color:'black'}} className='ms-3' href="#pricing">FAQ</Link>
+            <Link style={{textDecoration: 'none', color:'black'}} className='ms-3' to="/blog">Blog</Link>
+            <Link style={{textDecoration: 'none', color:'black'}} className='ms-3' href="#pricing">toggle theme (dark/ light)</Link>
             
           </Nav>
           <Nav>
