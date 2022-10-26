@@ -3,6 +3,7 @@ import Main from "../../layout/Main";
 import Blog from "../../Pages/Blog/Blog";
 import Cources from "../../Pages/Cources/Cources";
 import CourcesMain from "../../Pages/CourcesMain/CourcesMain";
+import Faq from "../../Pages/Faq/Faq";
 import Home from "../../Pages/Home/Home";
 import NotFoundPage from "../../Pages/NotFoundPage/NotFoundPage";
 import Profile from "../../Pages/Profile/Profile";
@@ -18,6 +19,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>
+            },
+            {
+                path: '/faq',
+                element: <Faq></Faq>  
             },
             {
                 path: '/',
