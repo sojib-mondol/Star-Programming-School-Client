@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layout/Main";
 import NotFoundPage from "../../Pages/NotFoundPage/NotFoundPage";
+import Profile from "../../Pages/Profile/Profile";
 import Login from "../../Pages/Shared/Login/Login";
 import Register from "../../Pages/Shared/Register/Register";
 import TramsAndCondition from "../../Pages/TramsAndCondition/TramsAndCondition";
@@ -22,6 +23,10 @@ export const routes = createBrowserRouter([
                 path:'/trams',
                 element: <TramsAndCondition></TramsAndCondition>
             },
+            {
+                path: '/profile',
+                element: <Profile></Profile>
+            }
         ]
     },
     {
