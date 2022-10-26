@@ -38,11 +38,11 @@ const Header = () => {
             
           </Nav>
           <Nav>
-            <Link to="/profile">
+            <Link to="/">
               {
                 user?.uid ? 
                 <>
-                  <span className='text-decoration-none'>{user?.displayName}</span>
+                  <Link to='/profile'><span className='text-decoration-none'>{user?.displayName}</span></Link>
                   <Link to="/profile">
                     {user?.photoURL?
                       <Image className=' ms-2' style={{height: '30px'}} roundedCircle src={user.photoURL}></Image>  

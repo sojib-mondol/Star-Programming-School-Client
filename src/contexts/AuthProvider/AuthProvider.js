@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import app from "../../firebase/firebase.config";
-import {getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, GithubAuthProvider, onAuthStateChanged, signOut } from "firebase/auth";
+import {getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, GithubAuthProvider, onAuthStateChanged, signOut, createUserWithEmailAndPassword, updateProfile, sendEmailVerification } from "firebase/auth";
 
 export const AuthContext = createContext();
 
@@ -18,6 +18,46 @@ const AuthProvider = ({children}) => {
     // use sagte for darkmod ..
     const [darkMode, setDarkMode] = useState(false);
 
+    
+    // createUserwithEmail&Password
+    const createUser = (email, password) => {
+        setLoading(true)
+        return createUserWithEmailAndPassword(auth, email, password);
+    }
+
+    // sign in 
+    const signIn = (email, password) => {
+        setLoading(true) // step: 4: set loding state for the not pop up login when user refresh the private page
+        return signInWithEmailAndPassword(auth, email, password);
+    }
+
+    // Sign in with Google 
+    const googleProvider = new GoogleAuthProvider();
+    const googleSignIn = () => {
+        setLoading(true)
+        return signInWithPopup(auth, googleProvider);
+    }
+
+    // sign in with gitHub 
+    const githubProvider = new GithubAuthProvider();
+    const githubSignIn = () => {
+        setLoading(true)
+        return signInWithPopup(auth, githubProvider);
+    }
+
+    // Sign out 
+    const logOut = () => {
+        setLoading(true) 
+        return signOut(auth);
+    }
+
+    // update user profile information 
+    // set the register form value like name, photo, url etc..
+    const updateUserProfile = (profile) => {
+        return updateProfile(auth.currentUser, profile);    
+    }
+
+
     // user observer for user login state 
     // Get the currently signed-in user
     // so we need use effect
@@ -34,30 +74,14 @@ const AuthProvider = ({children}) => {
 
     }, [])
 
-    // sign in 
-    const signIn = (email, password) => {
-        //setLoading(true) // step: 4: set loding state for the not pop up login when user refresh the private page
-        return signInWithEmailAndPassword(auth, email, password);
-    }
 
-    // Sign in with Google 
-    const googleProvider = new GoogleAuthProvider();
-    const googleSignIn = () => {
-        return signInWithPopup(auth, googleProvider);
-    }
+    // verufy Email
+    const verifyEmail = () => {
+        return sendEmailVerification(auth.currentUser);
 
-    // sign in with gitHub 
-    const githubProvider = new GithubAuthProvider();
-    const githubSignIn = () => {
-        return signInWithPopup(auth, githubProvider);
     }
-
-    // Sign out 
-    const logOut = () => {
-        return signOut(auth);
-    }
-
-    const authInfo = {user, darkMode, setDarkMode, signIn, googleSignIn, githubSignIn, logOut}
+    
+    const authInfo = {user, darkMode, loading, setDarkMode, createUser, signIn, googleSignIn, githubSignIn, logOut, updateUserProfile, verifyEmail}
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
