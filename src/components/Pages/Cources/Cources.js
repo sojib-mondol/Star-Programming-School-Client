@@ -1,6 +1,5 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import CourcesMain from '../CourcesMain/CourcesMain';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
 
 const Cources = () => {
@@ -12,7 +11,9 @@ const Cources = () => {
                         <LeftSideNav></LeftSideNav>
                     </Col>
                     <Col lg="8">
-                        <CourcesMain></CourcesMain>
+                        {/* <CourcesMain></CourcesMain> */}
+                        {/* <h2>This is main cources ils section</h2>
+                        <h2>Name: {cource?.author?.name}</h2> */}
                     </Col>
                 </Row>
             </Container>

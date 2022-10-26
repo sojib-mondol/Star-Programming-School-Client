@@ -6,6 +6,7 @@ import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 import Button from 'react-bootstrap/Button';
 import toast from 'react-hot-toast';
 import { FaUser } from 'react-icons/fa';
+import LeftSideNav from '../../LeftSideNav/LeftSideNav';
 
 const Header = () => {
 
@@ -31,10 +32,10 @@ const Header = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto ">
-            <Link style={{textDecoration: 'none', color:'black'}} className='ms-3' to="/cources">Courses</Link>
-            <Link style={{textDecoration: 'none', color:'black'}} className='ms-3' href="#pricing">FAQ</Link>
-            <Link style={{textDecoration: 'none', color:'black'}} className='ms-3' to="/blog">Blog</Link>
-            <Link style={{textDecoration: 'none', color:'black'}} className='ms-3' href="#pricing">toggle theme (dark/ light)</Link>
+            <Link style={{textDecoration: 'none', color:'black'}} className='me-3' to="/cources">Courses</Link>
+            <Link style={{textDecoration: 'none', color:'black'}} className='me-3' href="#pricing">FAQ</Link>
+            <Link style={{textDecoration: 'none', color:'black'}} className='me-3' to="/blog">Blog</Link>
+            <Link style={{textDecoration: 'none', color:'black'}} className='me-3' href="#pricing">toggle theme (dark/ light)</Link>
             
           </Nav>
           <Nav>
@@ -45,7 +46,7 @@ const Header = () => {
                   <Link to='/profile'><span className='text-decoration-none'>{user?.displayName}</span></Link>
                   <Link to="/profile">
                     {user?.photoURL?
-                      <Image className=' ms-2' style={{height: '30px'}} roundedCircle src={user.photoURL}></Image>  
+                      <Image className=' ms-2' style={{height: '30px'}} roundedCircle src={user?.photoURL} title={user?.displayName}></Image>  
                       :
                       <FaUser></FaUser>
                     }
@@ -66,7 +67,7 @@ const Header = () => {
             
           </Nav>
           <div className='d-lg-none'>
-            {/* <LeftSideNav></LeftSideNav> */}
+            <LeftSideNav></LeftSideNav>
           </div>
         </Navbar.Collapse>
       </Container>
