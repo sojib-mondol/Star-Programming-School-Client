@@ -1,7 +1,9 @@
 import React, { } from 'react';
-import { Container } from 'react-bootstrap';
+import {  Container } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 import {  } from '../../contexts/AuthProvider/AuthProvider';
+
+import Footer from '../Pages/Shared/Footer/Footer';
 import Header from '../Pages/Shared/Header/Header';
 
 const Main = () => {
@@ -11,8 +13,10 @@ const Main = () => {
         <div>
             <Header></Header>
             <Container>
-                <Outlet></Outlet>
+                <Outlet>
+                </Outlet>
             </Container>
+            <Footer></Footer>
             
         </div>
     );
