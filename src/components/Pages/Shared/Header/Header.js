@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import toast from 'react-hot-toast';
 import { FaUser } from 'react-icons/fa';
 import LeftSideNav from '../../LeftSideNav/LeftSideNav';
+import { MDBSwitch } from 'mdb-react-ui-kit';
 
 const Header = () => {
 
@@ -35,7 +36,7 @@ const Header = () => {
             <Link style={{textDecoration: 'none', color:'black'}} className='me-3' to="/cources">Courses</Link>
             <Link style={{textDecoration: 'none', color:'black'}} className='me-3' to="/faq">FAQ</Link>
             <Link style={{textDecoration: 'none', color:'black'}} className='me-3' to="/blog">Blog</Link>
-            <Link style={{textDecoration: 'none', color:'black'}} className='me-3' href="#pricing">toggle theme (dark/ light)</Link>
+            <div><MDBSwitch id='flexSwitchCheckDefault' label='Darkmod Enable' /></div>
             
           </Nav>
           <Nav>
