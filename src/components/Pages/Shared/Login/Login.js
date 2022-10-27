@@ -19,7 +19,7 @@ const Login = () => {
     // location fatching for redirect the user 
     const location = useLocation();
     // And feachig the from
-    const from = location.state?.from?.pathname || '/'
+    const from = location.state?.from?.pathname || '/';
 
 
     const handleSubmit = (event) => {
@@ -27,7 +27,7 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        //console.log(email, password);
         
         signIn(email, password)
         .then(result => {
@@ -39,12 +39,9 @@ const Login = () => {
             // set redirect page location means kon page e jete chai log in er por
            // navigate('/');
            //navigate(from, {replace: true});
-            if(user.emailVerified){
-                navigate(from, {replace: true});
-            }
-            else {
-                toast.error('Your email is not verified');
-            }
+           navigate(from, {replace: true});
+                
+            
         }) 
         .catch(error => {
             console.error(error)

@@ -36,7 +36,7 @@ const Header = () => {
             <Link style={{textDecoration: 'none', color:'black'}} className='me-3' to="/cources">Courses</Link>
             <Link style={{textDecoration: 'none', color:'black'}} className='me-3' to="/faq">FAQ</Link>
             <Link style={{textDecoration: 'none', color:'black'}} className='me-3' to="/blog">Blog</Link>
-            <div><MDBSwitch id='flexSwitchCheckDefault' label='Darkmod Enable' /></div>
+            <div><MDBSwitch id='flexSwitchCheckDefault' label='Switch to dark mode' /></div>
             
           </Nav>
           <Nav>
@@ -49,7 +49,7 @@ const Header = () => {
                     {user?.photoURL?
                       <Image className=' ms-2' style={{height: '30px'}} roundedCircle src={user?.photoURL} title={user?.displayName}></Image>  
                       :
-                      <FaUser></FaUser>
+                      <FaUser title={user?.displayName}></FaUser>
                     }
                   </Link>
                   <Button className='ms-4' variant="outline-primary" onClick={handleLogOut}>Log Out</Button>

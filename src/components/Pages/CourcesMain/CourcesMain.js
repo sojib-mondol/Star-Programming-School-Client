@@ -7,8 +7,8 @@ import Card from 'react-bootstrap/Card';
 
 const CourcesMain = () => {
     const cource = useLoaderData();
-    console.log(cource);
-    const {details, title, thumbnail_url} = cource;
+    //console.log(cource);
+    const {details, title, thumbnail_url, _id, price} = cource;
     
 
     return (
@@ -36,10 +36,13 @@ const CourcesMain = () => {
                                     }
                                     
                                 </Card.Text>
+                                <Card.Text>
+                                   <h4 className='text-primary'>Price: {price}</h4>
+                                </Card.Text>
                                 {/* <Card.Text>
                                     With supporting text below as a natural lead-in to additional content.
                                 </Card.Text> */}
-                                <Button variant="outline-primary">Get premium access</Button>
+                                <Link to={`/cources/${_id}`}><Button variant="outline-primary">Get premium access</Button></Link>
                             </Card.Body>
                             </Card>
                         </div>

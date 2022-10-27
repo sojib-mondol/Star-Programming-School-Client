@@ -15,45 +15,45 @@ const AuthProvider = ({children}) => {
     // Step: 1 set loding state for the not pop up login when user refresh the private page
     const [loading, setLoading] = useState(true);
 
-    // use sagte for darkmod ..
-    const [darkMode, setDarkMode] = useState(false);
+   
 
     
     // createUserwithEmail&Password
     const createUser = (email, password) => {
-        setLoading(true)
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     // sign in 
     const signIn = (email, password) => {
-        setLoading(true) // step: 4: set loding state for the not pop up login when user refresh the private page
+        setLoading(true); // step: 4: set loding state for the not pop up login when user refresh the private page
         return signInWithEmailAndPassword(auth, email, password);
     }
 
     // Sign in with Google 
     const googleProvider = new GoogleAuthProvider();
     const googleSignIn = () => {
-        setLoading(true)
+        setLoading(true);
         return signInWithPopup(auth, googleProvider);
     }
 
     // sign in with gitHub 
     const githubProvider = new GithubAuthProvider();
     const githubSignIn = () => {
-        setLoading(true)
+        setLoading(true);
         return signInWithPopup(auth, githubProvider);
     }
 
     // Sign out 
     const logOut = () => {
-        setLoading(true) 
+        setLoading(true); 
         return signOut(auth);
     }
 
     // update user profile information 
     // set the register form value like name, photo, url etc..
     const updateUserProfile = (profile) => {
+        
         return updateProfile(auth.currentUser, profile);    
     }
 
@@ -81,7 +81,7 @@ const AuthProvider = ({children}) => {
 
     }
     
-    const authInfo = {user, darkMode, loading, setDarkMode, createUser, signIn, googleSignIn, githubSignIn, logOut, updateUserProfile, verifyEmail}
+    const authInfo = {user, loading, createUser, signIn, googleSignIn, githubSignIn, logOut, updateUserProfile, verifyEmail}
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
