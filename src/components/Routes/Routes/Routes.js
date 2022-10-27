@@ -54,13 +54,13 @@ export const routes = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <CourcesMain></CourcesMain>,
-                loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({params}) => fetch(`https://star-programmers-server.vercel.app/category/${params.id}`)
             },
             
             {
                 path:'/cources/:id',
                 element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/cources/${params.id}`)
+                loader: ({params}) => fetch(`https://star-programmers-server.vercel.app/cources/${params.id}`)
             }
         ]
     },

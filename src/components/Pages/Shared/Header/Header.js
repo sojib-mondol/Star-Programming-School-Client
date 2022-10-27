@@ -7,7 +7,9 @@ import Button from 'react-bootstrap/Button';
 import toast from 'react-hot-toast';
 import { FaUser } from 'react-icons/fa';
 import LeftSideNav from '../../LeftSideNav/LeftSideNav';
-import { MDBSwitch } from 'mdb-react-ui-kit';
+
+import './Heder.css';
+import ToggleSwitch from '../../../ToggleSwitch/ToggleSwitch';
 
 const Header = () => {
 
@@ -23,22 +25,26 @@ const Header = () => {
     }
 
     return (
-        <div>
+    <div>
     <Navbar className='mb-4' collapseOnSelect expand="lg" bg="light" variant="light">
+    
       <Container>
+      
         <Navbar.Brand >
+        
             <Link to='/'><img style={{height:'35px'}} className="me-2 rounded-5" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF4Gh0FiwQepiJqTtYfE5NtojkXvPVLITywA&usqp=CAU" alt="" /></Link>
             <Link style={{textDecoration: 'none', color:'black', fontWeight: 'bold'}} to='/'>Star Programming School</Link>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Toggle  aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto ">
             <Link style={{textDecoration: 'none', color:'black'}} className='me-3' to="/cources">Courses</Link>
             <Link style={{textDecoration: 'none', color:'black'}} className='me-3' to="/faq">FAQ</Link>
             <Link style={{textDecoration: 'none', color:'black'}} className='me-3' to="/blog">Blog</Link>
-            <div><MDBSwitch id='flexSwitchCheckDefault' label='Switch to dark mode' /></div>
+            
             
           </Nav>
+          <div className=' pb-2 mt-0'><ToggleSwitch label="Switch to dark mode"></ToggleSwitch></div>
           <Nav>
             <Link to="/">
               {
