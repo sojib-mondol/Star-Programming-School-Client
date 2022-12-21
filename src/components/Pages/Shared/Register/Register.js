@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 
@@ -15,6 +15,13 @@ const Register = () => {
 
     //for trums and conditions 
     const [accepted, setAccepted] = useState(false);
+
+    // for redirect means ----- login korar por kono ekta page e jaoya 
+    const navigate = useNavigate();
+    // location fatching for redirect the user 
+    const location = useLocation();
+    // And feachig the from
+    const from = location.state?.from?.pathname || '/';
 
 
     const handleSubmit = (event) => {
@@ -51,6 +58,8 @@ const Register = () => {
             // verifying email
             handleEmailVerification();
             toast.success('Please verify your email Address.');
+            //navigate(from, {replace: true});
+           navigate(from, {replace: true});
             
            
         }) 
@@ -67,6 +76,8 @@ const Register = () => {
             const user = result.user;
             console.log(user);
             toast.success('Successfully logged in');
+            //navigate(from, {replace: true});
+           navigate(from, {replace: true});
         })
         .catch(error => console.error(error));
     }
@@ -78,6 +89,8 @@ const Register = () => {
             const user = result.user;
             console.log(user);
             toast.success('Successfully logged in');
+            //navigate(from, {replace: true});
+           navigate(from, {replace: true});
         })
         .catch(error => console.error(error));
     }
